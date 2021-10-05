@@ -14,6 +14,11 @@ fn main() {
 }
 
 
-fn handle_conncetion(mut stream: TcpStream){
+fn handle_connection(mut stream: TcpStream){
+    let mut buffer = [0; 256];
+    stream.read(&mut buffer).unwrap();
 
+    println!("Requests: {}", String::from_utf8_lossy(&buffer[..]))
 }
+
+
