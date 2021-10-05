@@ -1,8 +1,19 @@
 
 use std::net::{TcpListener, TcpStream};
+use std::io::prelude::*;
+
 
 fn main() {
-    println!("Hello, world!");
+    let listener = TcpListener::bind("127.0.0.1:7373").unwrap();
 
-    // let listener = TcpListener::bind("127.0.0.1:7373").unwrap();
+    for stream in listener.incoming(){
+        let stream = stream.unwrap();
+
+        handle_connection(stream);
+    }
+}
+
+
+fn handle_conncetion(mut stream: TcpStream){
+
 }
